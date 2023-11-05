@@ -9,7 +9,6 @@ Write C programs to illustrate IPC using pipes mechanisms
 3.Create two file descriptor fd[0] is set up for reading, fd[1] isset up forwriting
 4.Close the read end of parent process using close() and perform writeoperation
 5.Close the write end of child process and performreading
-
 6.Display thetext.
 ## PROGRAM:
 ```
