@@ -1,15 +1,59 @@
 # OS-EX.6-IMPLEMENTATION-OF-INTER-PROCESS-COMMUNICATION-USING-PIPE
+## AIM:
+Write C programs to illustrate IPC using pipes mechanisms
+## ALGORITHM:
 
-AIM:
+## IPC using pipes
+1.Create a child process usingfork()
+2.Create a simple pipe with C, we make use of the pipe() systemcall.
+3.Create two file descriptor fd[0] is set up for reading, fd[1] isset up forwriting
+4.Close the read end of parent process using close() and perform writeoperation
+5.Close the write end of child process and performreading
 
-ALGORITHM:
+6.Display thetext.
+## PROGRAM:
+```
+#include <stdio.h>
 
+int main()
 
-PROGRAM:
+{
 
+int fd[2],child; char a[10];
 
+printf("\n Enter the string:");
 
-OUTPUT:
+scanf("%s",a);
 
+pipe(fd);
 
-RESULT:
+child=fork();
+
+if(!child)
+
+{
+
+close(fd[0]);
+
+write(fd[1],a,5); wait(0);
+
+}
+
+else
+
+{
+
+close(fd[1]);
+
+read(fd[0],a,5); printf("The string received from pipe is: %s",a);
+
+}
+
+return 0;
+
+}
+```
+## OUTPUT:
+![270086463-0e999150-bfe0-4dab-a4d4-49f823dccdde](https://github.com/Jeevithha/OS-EX.6-IMPLEMENTATION-OF-INTER-PROCESS-COMMUNICATION-USING-PIPE/assets/123623197/d6d6b837-bad3-4f16-88b8-29a0c9d86910)
+## RESULT:
+Thus, IPC using pipes mechanisms is illustrated using c program successfully
